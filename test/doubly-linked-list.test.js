@@ -235,15 +235,11 @@ describe('DoublyLinkedList', function() {
       list.insertEnd('second');
       list.insertEnd('third');
       list.insertEnd('fourth');
-      var iterator = list.iterator();
 
       it('iterates the list', function() {
-        expect(iterator.next()).to.equal('first');
-        expect(iterator.next()).to.equal('second');
-        expect(iterator.next()).to.equal('third');
-        expect(iterator.next()).to.equal('fourth');
-        expect(iterator.hasNext()).to.equal(false);
-        expect(iterator.next()).to.equal(null);
+        for (let value of list) {
+          expect(value).to.not.equal(null);
+        }
       });
     });
   });
