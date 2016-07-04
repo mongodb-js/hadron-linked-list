@@ -253,15 +253,77 @@ describe('DoublyLinkedList', function() {
 
     context('when the node is not the only node in the list', function() {
       context('when the node is the first node', function() {
+        before(function() {
+          this.list = new List();
+          this.node = this.list.insertBeginning('first');
+          this.lastNode = this.list.insertEnd('last');
+          this.list.remove(this.node);
+        });
 
+        Examples.itRemovesTheNodeFromTheList();
+
+        it('sets the first node to the last node', function() {
+          expect(this.list.firstNode).to.equal(this.lastNode);
+        });
+
+        it('sets the last node previous node to null', function() {
+          expect(this.lastNode.previousNode).to.equal(null);
+        });
+
+        it('reduces the size', function() {
+          expect(this.list.size).to.equal(1);
+        });
       });
 
       context('when the node is the last node', function() {
+        before(function() {
+          this.list = new List();
+          this.lastNode = this.list.insertEnd('last');
+          this.node = this.list.insertEnd('first');
+          this.list.remove(this.node);
+        });
 
+        Examples.itRemovesTheNodeFromTheList();
+
+        it('sets the first node to the last node', function() {
+          expect(this.list.firstNode).to.equal(this.lastNode);
+        });
+
+        it('sets the last node previous node to null', function() {
+          expect(this.lastNode.previousNode).to.equal(null);
+        });
+
+        it('sets the last node next node to null', function() {
+          expect(this.lastNode.nextNode).to.equal(null);
+        });
+
+        it('reduces the size', function() {
+          expect(this.list.size).to.equal(1);
+        });
       });
 
       context('when the node is in the middle', function() {
+        before(function() {
+          this.list = new List();
+          this.firstNode = this.list.insertEnd('first');
+          this.node = this.list.insertAfter(this.firstNode, 'middle');
+          this.lastNode = this.list.insertEnd('last');
+          this.list.remove(this.node);
+        });
 
+        Examples.itRemovesTheNodeFromTheList();
+
+        it('sets the first node next node to the last node', function() {
+          expect(this.firstNode.nextNode).to.equal(this.lastNode);
+        });
+
+        it('sets the last node previous node to the first node', function() {
+          expect(this.lastNode.previousNode).to.equal(this.firstNode);
+        });
+
+        it('reduces the size', function() {
+          expect(this.list.size).to.equal(2);
+        });
       });
     });
   });
