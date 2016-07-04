@@ -5,10 +5,17 @@ const expect = chai.expect;
 const List = require('../lib/doubly-linked-list.js');
 
 describe('DoublyLinkedList', function() {
-  describe('#append', function() {
+  describe('#insertAfter', function() {
+
+  });
+
+  describe('#insertBeginning', function() {
+  });
+
+  describe('#insertEnd', function() {
     context('when the data is the first in the list', function() {
       var list = new List();
-      var node = list.append('first');
+      var node = list.insertEnd('first');
 
       it('returns the node', function() {
         expect(node.data).to.equal('first');
@@ -37,8 +44,8 @@ describe('DoublyLinkedList', function() {
 
     context('when the data is not the first in the list', function() {
       var list = new List();
-      var firstNode = list.append('first');
-      var secondNode = list.append('second');
+      var firstNode = list.insertEnd('first');
+      var secondNode = list.insertEnd('second');
 
       it('returns the node', function() {
         expect(secondNode.data).to.equal('second');
