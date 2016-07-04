@@ -17,4 +17,15 @@ function itInsertsTheNodeAtTheBeginningOfTheList() {
   });
 }
 
+function itRemovesTheNodeFromTheList() {
+  it('sets the previous node to null', function() {
+    expect(this.node.previousNode).to.equal(null);
+  });
+
+  it('sets the next node to null', function() {
+    expect(this.node.nextNode).to.equal(null);
+  });
+}
+
 module.exports.itInsertsTheNodeAtTheBeginningOfTheList = itInsertsTheNodeAtTheBeginningOfTheList;
+module.exports.itRemovesTheNodeFromTheList = itRemovesTheNodeFromTheList;

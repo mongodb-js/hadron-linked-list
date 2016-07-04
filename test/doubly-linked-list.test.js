@@ -6,6 +6,24 @@ const List = require('../lib/doubly-linked-list.js');
 const Examples = require('./shared-examples');
 
 describe('DoublyLinkedList', function() {
+  describe('#constructor', function() {
+    context('when no arguments are passed', function() {
+      var list = new List();
+
+      it('sets the firstNode to null', function() {
+        expect(list.firstNode).to.equal(null);
+      });
+
+      it('sets the lastNode to null', function() {
+        expect(list.lastNode).to.equal(null);
+      });
+
+      it('sets the size to 0', function() {
+        expect(list.size).to.equal(0);
+      });
+    });
+  });
+
   describe('#insertAfter', function() {
     context('when the node is the last node in the list', function() {
       var list = new List();
@@ -210,20 +228,40 @@ describe('DoublyLinkedList', function() {
     });
   });
 
-  describe('#constructor', function() {
-    context('when no arguments are passed', function() {
-      var list = new List();
-
-      it('sets the firstNode to null', function() {
-        expect(list.firstNode).to.equal(null);
+  describe('#remove', function() {
+    context('when the node is the only node in the list', function() {
+      before(function() {
+        this.list = new List();
+        this.node = this.list.insertEnd('first');
+        this.list.remove(this.node);
       });
 
-      it('sets the lastNode to null', function() {
-        expect(list.lastNode).to.equal(null);
+      Examples.itRemovesTheNodeFromTheList();
+
+      it('sets the first node to null', function() {
+        expect(this.list.firstNode).to.equal(null);
       });
 
-      it('sets the size to 0', function() {
-        expect(list.size).to.equal(0);
+      it('sets the last node to null', function() {
+        expect(this.list.lastNode).to.equal(null);
+      });
+
+      it('reduces the size', function() {
+        expect(this.list.size).to.equal(0);
+      });
+    });
+
+    context('when the node is not the only node in the list', function() {
+      context('when the node is the first node', function() {
+
+      });
+
+      context('when the node is the last node', function() {
+
+      });
+
+      context('when the node is in the middle', function() {
+
       });
     });
   });
