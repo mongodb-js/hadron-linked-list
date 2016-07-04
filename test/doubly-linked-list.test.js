@@ -62,7 +62,58 @@ describe('DoublyLinkedList', function() {
   });
 
   describe('#insertBefore', function() {
+    context('when the node is the first node in the list', function() {
+      var list = new List();
+      var firstNode = list.insertBeginning('first');
+      var newNode = list.insertBefore(firstNode, 'second');
 
+      it('returns the new node', function() {
+        expect(newNode.data).to.equal('second');
+      });
+
+      it('sets the new node next node', function() {
+        expect(newNode.nextNode).to.equal(firstNode);
+      });
+
+      it('sets the previous node on the next node', function() {
+        expect(firstNode.previousNode).to.equal(newNode);
+      });
+
+      it('sets the new node previous node to null', function() {
+        expect(newNode.previousNode).to.equal(null);
+      });
+
+      it('sets the list size', function() {
+        expect(list.size).to.equal(2);
+      });
+    });
+
+    context('when the node is not the first node in the list', function() {
+      var list = new List();
+      var firstNode = list.insertBeginning('first');
+      var secondNode = list.insertAfter(firstNode, 'second');
+      var newNode = list.insertBefore(secondNode, 'new');
+
+      it('returns the new node', function() {
+        expect(newNode.data).to.equal('new');
+      });
+
+      it('sets the new node next node', function() {
+        expect(newNode.nextNode).to.equal(secondNode);
+      });
+
+      it('sets the previous node on the next node', function() {
+        expect(secondNode.previousNode).to.equal(newNode);
+      });
+
+      it('sets the new node previous node to the first node', function() {
+        expect(newNode.previousNode).to.equal(firstNode);
+      });
+
+      it('sets the list size', function() {
+        expect(list.size).to.equal(3);
+      });
+    });
   });
 
   describe('#insertBeginning', function() {
