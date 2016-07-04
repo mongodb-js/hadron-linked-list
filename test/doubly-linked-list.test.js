@@ -10,6 +10,10 @@ describe('DoublyLinkedList', function() {
 
   });
 
+  describe('#insertBefore', function() {
+
+  });
+
   describe('#insertBeginning', function() {
     context('when the data is the first in the list', function() {
       before(function() {
@@ -18,6 +22,28 @@ describe('DoublyLinkedList', function() {
       });
 
       Examples.itInsertsTheNodeAtTheBeginningOfTheList();
+    });
+
+    context('when the data is not the first node in the list', function() {
+      before(function() {
+        this.list = new List();
+        this.lastNode = this.list.insertEnd('last');
+        this.node = this.list.insertBeginning('first');
+      });
+
+      Examples.itInsertsTheNodeAtTheBeginningOfTheList();
+
+      it('sets the list last node to the last node', function() {
+        expect(this.list.lastNode).to.equal(this.lastNode);
+      });
+
+      it('sets the node data next node to the last node', function() {
+        expect(this.node.nextNode).to.equal(this.lastNode);
+      });
+
+      it('sets the size of the list to 2', function() {
+        expect(this.list.size).to.equal(2);
+      });
     });
   });
 
@@ -29,6 +55,18 @@ describe('DoublyLinkedList', function() {
       });
 
       Examples.itInsertsTheNodeAtTheBeginningOfTheList();
+
+      it('sets the last node to the data node', function() {
+        expect(this.list.lastNode).to.equal(this.node);
+      });
+
+      it('sets the node data next node to null', function() {
+        expect(this.node.nextNode).to.equal(null);
+      });
+
+      it('sets the size of the list to 1', function() {
+        expect(this.list.size).to.equal(1);
+      });
     });
 
     context('when the data is not the first in the list', function() {
