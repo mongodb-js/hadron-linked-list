@@ -242,6 +242,7 @@ describe('DoublyLinkedList', function() {
         expect(iterator.next()).to.equal('second');
         expect(iterator.next()).to.equal('third');
         expect(iterator.next()).to.equal('fourth');
+        expect(iterator.hasNext()).to.equal(false);
         expect(iterator.next()).to.equal(null);
       });
     });
