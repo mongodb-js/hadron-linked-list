@@ -15,7 +15,14 @@ npm install --save hadron-linked-list
 
 const DoublyLinkedList = require('hadron-linked-list').DoublyLinkedList;
 
-var doublyLinkedList = new DoublyLinkedList();
+var list = new DoublyLinkedList();
+list.insertEnd('first');
+list.insertEnd('second');
+list.insertEnd('third');
+
+for (let value of list) {
+  console.log(value);
+}
 ```
 
 ## License
