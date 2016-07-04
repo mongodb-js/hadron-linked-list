@@ -7,7 +7,58 @@ const Examples = require('./shared-examples');
 
 describe('DoublyLinkedList', function() {
   describe('#insertAfter', function() {
+    context('when the node is the last node in the list', function() {
+      var list = new List();
+      var firstNode = list.insertBeginning('first');
+      var nextNode = list.insertAfter(firstNode, 'second');
 
+      it('returns the new node', function() {
+        expect(nextNode.data).to.equal('second');
+      });
+
+      it('sets the new node previous node', function() {
+        expect(nextNode.previousNode).to.equal(firstNode);
+      });
+
+      it('sets the next node on the previous node', function() {
+        expect(firstNode.nextNode).to.equal(nextNode);
+      });
+
+      it('sets the new node next node to null', function() {
+        expect(nextNode.nextNode).to.equal(null);
+      });
+
+      it('sets the list size', function() {
+        expect(list.size).to.equal(2);
+      });
+    });
+
+    context('when the node is not the last node in the list', function() {
+      var list = new List();
+      var firstNode = list.insertBeginning('first');
+      var secondNode = list.insertAfter(firstNode, 'second');
+      var newNode = list.insertAfter(firstNode, 'new');
+
+      it('returns the new node', function() {
+        expect(newNode.data).to.equal('new');
+      });
+
+      it('sets the new node previous node', function() {
+        expect(newNode.previousNode).to.equal(firstNode);
+      });
+
+      it('sets the next node on the previous node', function() {
+        expect(firstNode.nextNode).to.equal(newNode);
+      });
+
+      it('sets the new node next node to the last node', function() {
+        expect(newNode.nextNode).to.equal(secondNode);
+      });
+
+      it('sets the list size', function() {
+        expect(list.size).to.equal(3);
+      });
+    });
   });
 
   describe('#insertBefore', function() {
