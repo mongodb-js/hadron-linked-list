@@ -228,6 +228,25 @@ describe('DoublyLinkedList', function() {
     });
   });
 
+  context('when iterating over the list', function() {
+    context('when the list has entries', function() {
+      var list = new List();
+      list.insertEnd('first');
+      list.insertEnd('second');
+      list.insertEnd('third');
+      list.insertEnd('fourth');
+      var iterator = list.iterator();
+
+      it('iterates the list', function() {
+        expect(iterator.next()).to.equal('first');
+        expect(iterator.next()).to.equal('second');
+        expect(iterator.next()).to.equal('third');
+        expect(iterator.next()).to.equal('fourth');
+        expect(iterator.next()).to.equal(null);
+      });
+    });
+  });
+
   describe('#remove', function() {
     context('when the node is the only node in the list', function() {
       before(function() {
