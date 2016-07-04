@@ -3,37 +3,12 @@
 const chai = require('chai');
 const expect = chai.expect;
 const List = require('../lib/doubly-linked-list.js');
+const Examples = require('./shared-examples');
 
 describe('DoublyLinkedList', function() {
   describe('#insertAfter', function() {
 
   });
-
-  function itInsertsTheNodeAtTheBeginningOfTheList() {
-    it('returns the node', function() {
-      expect(this.node.data).to.equal('first');
-    });
-
-    it('sets the first node to the data node', function() {
-      expect(this.list.firstNode).to.equal(this.node);
-    });
-
-    it('sets the last node to the data node', function() {
-      expect(this.list.lastNode).to.equal(this.node);
-    });
-
-    it('sets the node data previous node to null', function() {
-      expect(this.node.previousNode).to.equal(null);
-    });
-
-    it('sets the node data next node to null', function() {
-      expect(this.node.nextNode).to.equal(null);
-    });
-
-    it('sets the size of the list to 1', function() {
-      expect(this.list.size).to.equal(1);
-    });
-  }
 
   describe('#insertBeginning', function() {
     context('when the data is the first in the list', function() {
@@ -42,7 +17,7 @@ describe('DoublyLinkedList', function() {
         this.node = this.list.insertBeginning('first');
       });
 
-      itInsertsTheNodeAtTheBeginningOfTheList();
+      Examples.itInsertsTheNodeAtTheBeginningOfTheList();
     });
   });
 
@@ -53,7 +28,7 @@ describe('DoublyLinkedList', function() {
         this.node = this.list.insertEnd('first');
       });
 
-      itInsertsTheNodeAtTheBeginningOfTheList();
+      Examples.itInsertsTheNodeAtTheBeginningOfTheList();
     });
 
     context('when the data is not the first in the list', function() {
