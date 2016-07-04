@@ -36,7 +36,41 @@ describe('DoublyLinkedList', function() {
     });
 
     context('when the data is not the first in the list', function() {
+      var list = new List();
+      var firstNode = list.append('first');
+      var secondNode = list.append('second');
 
+      it('returns the node', function() {
+        expect(secondNode.data).to.equal('second');
+      });
+
+      it('sets the first node to the first data node', function() {
+        expect(list.firstNode).to.equal(firstNode);
+      });
+
+      it('sets the last node to the second data node', function() {
+        expect(list.lastNode).to.equal(secondNode);
+      });
+
+      it('sets the second node data previous node to the first node', function() {
+        expect(secondNode.previousNode).to.equal(firstNode);
+      });
+
+      it('sets the second node data next node to null', function() {
+        expect(secondNode.nextNode).to.equal(null);
+      });
+
+      it('sets the first node data previous node to null', function() {
+        expect(firstNode.previousNode).to.equal(null);
+      });
+
+      it('sets the first node data next node to the second node', function() {
+        expect(firstNode.nextNode).to.equal(secondNode);
+      });
+
+      it('sets the size of the list to 2', function() {
+        expect(list.size).to.equal(2);
+      });
     });
   });
 
