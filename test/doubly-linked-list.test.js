@@ -9,37 +9,51 @@ describe('DoublyLinkedList', function() {
 
   });
 
+  function itInsertsTheNodeAtTheBeginningOfTheList() {
+    it('returns the node', function() {
+      expect(this.node.data).to.equal('first');
+    });
+
+    it('sets the first node to the data node', function() {
+      expect(this.list.firstNode).to.equal(this.node);
+    });
+
+    it('sets the last node to the data node', function() {
+      expect(this.list.lastNode).to.equal(this.node);
+    });
+
+    it('sets the node data previous node to null', function() {
+      expect(this.node.previousNode).to.equal(null);
+    });
+
+    it('sets the node data next node to null', function() {
+      expect(this.node.nextNode).to.equal(null);
+    });
+
+    it('sets the size of the list to 1', function() {
+      expect(this.list.size).to.equal(1);
+    });
+  }
+
   describe('#insertBeginning', function() {
+    context('when the data is the first in the list', function() {
+      before(function() {
+        this.list = new List();
+        this.node = this.list.insertBeginning('first');
+      });
+
+      itInsertsTheNodeAtTheBeginningOfTheList();
+    });
   });
 
   describe('#insertEnd', function() {
     context('when the data is the first in the list', function() {
-      var list = new List();
-      var node = list.insertEnd('first');
-
-      it('returns the node', function() {
-        expect(node.data).to.equal('first');
+      before(function() {
+        this.list = new List();
+        this.node = this.list.insertEnd('first');
       });
 
-      it('sets the first node to the data node', function() {
-        expect(list.firstNode).to.equal(node);
-      });
-
-      it('sets the last node to the data node', function() {
-        expect(list.lastNode).to.equal(node);
-      });
-
-      it('sets the node data previous node to null', function() {
-        expect(node.previousNode).to.equal(null);
-      });
-
-      it('sets the node data next node to null', function() {
-        expect(node.nextNode).to.equal(null);
-      });
-
-      it('sets the size of the list to 1', function() {
-        expect(list.size).to.equal(1);
-      });
+      itInsertsTheNodeAtTheBeginningOfTheList();
     });
 
     context('when the data is not the first in the list', function() {
