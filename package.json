@@ -4,7 +4,7 @@
   "author": "Durran Jordan <durran@gmail.com>",
   "bugs": "https://github.com/mongodb-js/hadron-linked-list/issues",
   "homepage": "https://github.com/mongodb-js/hadron-linked-list",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/mongodb-js/hadron-linked-list.git"
@@ -22,8 +22,7 @@
   "precommit": [
     "check"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^3.4.1",
     "eslint-config-mongodb-js": "^1.0.6",
